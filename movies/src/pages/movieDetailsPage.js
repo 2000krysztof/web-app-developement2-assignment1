@@ -12,18 +12,18 @@ const MoviePage = (props) => {
 	const [movie, setMovie] = useState(null);
 	const [images, setImages] = useState([]);
 
-  useEffect(() => {
-    getMovie(id).then((movie) => {
-      setMovie(movie);
-    });
-  }, [id]);
+	useEffect(() => {
+		getMovie(id).then((movie) => {
+			setMovie(movie);
+		});
+	}, [id]);
 
-  useEffect(() => {
-    getMovieImages(id).then((images) => {
-      setImages(images);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+	useEffect(() => {
+		getMovieImages(id).then((images) => {
+			setImages(images);
+		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
   return (
     <>
