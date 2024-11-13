@@ -12,9 +12,6 @@ This is a repository for the Web App Developemnet 2 module in college. This Proj
  
 + Trending Movies Page
 + Now Playing Movies Page
-+ Feature 3
-+ etc
-+ etc
 
 ## Setup requirements.
 
