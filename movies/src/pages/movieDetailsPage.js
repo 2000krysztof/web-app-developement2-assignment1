@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import MovieDetails from "../components/movieDetails/";
 import PageTemplate from "../components/templateMoviePage";
 import RecomendedMovies from "../components/recommendedMovies";
+import MovieCast from "../components/movieCast";
 import { getMovie , getRecommendedMovies} from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
@@ -31,7 +32,9 @@ const MoviePage = (props) => {
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
+			<MovieCast id={id}/>	
 			<RecomendedMovies id={id}/>
+
           </PageTemplate>
         </>
       ) : (

@@ -143,7 +143,6 @@ export const getNowPlayingMovies = () => {
 export const getRecommendedMovies = ({queryKey}) => {
     const [, idPart] = queryKey;
     const { id } = idPart;
-	console.log(id);
     return fetch(
       `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
     ).then( (response) => {
@@ -158,4 +157,25 @@ export const getRecommendedMovies = ({queryKey}) => {
       throw error
    });
   };
+
+export const getMovieCast = ({queryKey}) => {
+
+    const [, idPart] = queryKey;
+    const { id } = idPart;
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+    ).then( (response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.status_message || "Something went wrong");
+        });
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
+
+
 
