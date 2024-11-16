@@ -3,28 +3,31 @@ import { MoviesContext } from "../../contexts/moviesContext";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid2";
 
+
+const makeButton = (number, setPageNumber)=>{
+	return (<Button 
+		onClick={() => {setPageNumber(number)}}> 
+		{number} 
+	</Button>);
+}
+
+
+
 const PageNumbers = ({pageNumber, setPageNumber}) => {
 	const buttons = []
 
-	const startingNumber = pageNumber>5? pageNumber-4 : 1;
+	const startingNumber = pageNumber>5? pageNumber-3 : 1;
 	
 	if (startingNumber != 1){
+			buttons.push(makeButton(1,setPageNumber))
 			buttons.push(
-					<Button 
-					onClick={() => {setPageNumber(1)}}> 
-					{1} 
-					</Button>
+					<Button>{"..."}</Button>
 			)
 	}
 	
 	for(let i = startingNumber; i<startingNumber + 10; i++){
 		if( i != pageNumber){
-			buttons.push(
-					<Button 
-					onClick={() => {setPageNumber(i)}}> 
-					{i} 
-					</Button>
-			)
+			buttons.push(makeButton(i,setPageNumber));
 		}
 		else{
 			buttons.push(
