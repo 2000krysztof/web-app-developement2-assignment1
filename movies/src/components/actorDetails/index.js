@@ -48,7 +48,6 @@ const ActorDetails = ({actor}) =>{
 		/>)
 	}
 
-
 	return (
 	<Grid container sx={{...root}}>
 		
@@ -89,7 +88,7 @@ const ActorDetails = ({actor}) =>{
 		/>
 		<Chip
 			icon= <Cake/>
-			label = {actor.birthday? actor.birthday : "" +"  "+ actor.place_of_birth? actor.place_of_birth: ""}
+			label = {(actor.birthday? actor.birthday : "") + "  " + actor.place_of_birth? actor.place_of_birth : ""}
 			sx = {{margin:1}}
 		/>
 		{genderChip(actor.gender)}	
