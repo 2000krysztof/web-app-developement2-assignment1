@@ -9,7 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import img from '../../images/film-poster-placeholder.png'
 import { Chip } from "@mui/material";
 import { Cake, StarRate } from "@mui/icons-material";
-import { IoMale, IoFemale, IoMaleFemale} from "react-icons/io5";
+import {PiGenderNonbinary, PiGenderMale, PiGenderFemale} from "react-icons/pi"
 import MovieCredits from "../MovieCredits";
 
 const ActorDetails = ({actor}) =>{
@@ -31,13 +31,13 @@ const ActorDetails = ({actor}) =>{
 			case 0:
 				return;
 			case 1:
-				icon = <IoFemale/>
+				icon = <PiGenderFemale/>
 				break;
 			case 2:
-				icon = <IoMale/>
+				icon = <PiGenderMale/>
 				break;
 			case 3:
-				icon = <IoMaleFemale/>
+				icon = <PiGenderNonbinary/>
 			default:
 				return;
 		}
@@ -78,13 +78,18 @@ const ActorDetails = ({actor}) =>{
 		>
 
 		<Chip 
+			label = {actor.name}
+			color = "primary"
+			sx = {{margin:1}}
+		/>
+		<Chip 
 			icon = <StarRate/> 
 			label = {actor.popularity}
 			sx = {{margin:1}}
 		/>
 		<Chip
 			icon= <Cake/>
-			label = {actor.birthday +"  "+ actor.place_of_birth}
+			label = {actor.birthday? actor.birthday : "" +"  "+ actor.place_of_birth? actor.place_of_birth: ""}
 			sx = {{margin:1}}
 		/>
 		{genderChip(actor.gender)}	
