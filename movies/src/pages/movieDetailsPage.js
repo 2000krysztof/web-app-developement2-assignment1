@@ -25,7 +25,6 @@ const MoviePage = (props) => {
     return <h1>{error.message}</h1>;
   }
 
-
   return (
     <>
       {movie ? (

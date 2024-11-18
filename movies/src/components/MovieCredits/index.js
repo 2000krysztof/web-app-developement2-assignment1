@@ -1,23 +1,19 @@
+
 import React from "react";
-import Movie from "../movieCard";
 import Grid from "@mui/material/Grid";
 
-import { getMovieCast } from "../../api/tmdb-api";
+import { getMovieCredits } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../../components/spinner';
-import Header from "../headerMovieList";
-import MovieCastList from "../movieCastList";
 import { Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import MovieCreditsList from "../MovieCreditList";
 
+const MovieCredits = (id) =>{
 
-
-const MovieCast = (id) =>{
-	
-	
   const { data: data, error, isLoading, isError } = useQuery(
-	["cast",  id ],
-	 getMovieCast 
+	["credits",  id ],
+	 getMovieCredits 
   );
 
   if (isLoading) {
@@ -28,11 +24,10 @@ const MovieCast = (id) =>{
     return <h1>{error.message}</h1>;
   }
 
-  const cast = data.cast;
+	const credits = data.cast;
 
-  return (
-    <Paper 
-      component="div" 
+	return (
+		<Paper component = "div"
       sx={{
         display: "flex",
         justifyContent: "space-around",
@@ -41,17 +36,18 @@ const MovieCast = (id) =>{
       }}
       >
       <Typography variant="h4" component="h3">
-		 Cast 
+		Cast	
       </Typography>
+
     <Grid container>
       <Grid container sx={{flex: "2 1 500px"}} >
-        <MovieCastList action={()=>{}} cast={cast}></MovieCastList>
+		<MovieCreditsList credits = {credits}/>
       </Grid>
     </Grid>
-    </Paper>
-  );
-
+		</Paper>
+	
+	)
 
 }
 
-export default MovieCast;
+export default MovieCredits;

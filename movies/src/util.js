@@ -6,3 +6,10 @@ export function excerpt(string) {
     separator: /,?\.* +/, // separate by spaces, including preceding commas and periods
   });
 }
+
+export function idAndNameToPersonId(id, name){
+	name = name.toLowerCase();
+	name = name.split(" ").join("-");
+	name = name.split("'").join("-");
+	return id + "-" + name 
+}
