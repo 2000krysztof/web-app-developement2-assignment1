@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { getUpcomingMovies} from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
@@ -7,7 +7,8 @@ import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 import AddToPlaylist from "../components/cardIcons/addToPlaylistIcon";
 
 const UpcomingMoviesPage = () => {
-  const {  data, error, isLoading, isError }  = useQuery('upcoming', getUpcomingMovies)
+	const [pageNumber, setPageNumber] = useState(1);
+  const {  data, error, isLoading, isError }  = useQuery(['upcoming', pageNumber], getUpcomingMovies)
 
   if (isLoading) {
     return <Spinner />
@@ -25,6 +26,8 @@ const UpcomingMoviesPage = () => {
         action={(movie) => {
           return <AddToPlaylist movie={movie} />
         }}
+		pageNumber={pageNumber}
+		setPageNumber={setPageNumber}
       />
   );
 };

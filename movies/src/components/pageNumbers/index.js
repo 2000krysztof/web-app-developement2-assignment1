@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid2";
 
 
 const makeButton = (number, setPageNumber)=>{
+
 	return (<Button 
 		onClick={() => {setPageNumber(number)}}> 
 		{number} 
@@ -14,6 +15,9 @@ const makeButton = (number, setPageNumber)=>{
 
 
 const PageNumbers = ({pageNumber, setPageNumber}) => {
+	if(pageNumber == undefined){
+		return;
+	}
 	const buttons = []
 
 	const startingNumber = pageNumber>5? pageNumber-3 : 1;
